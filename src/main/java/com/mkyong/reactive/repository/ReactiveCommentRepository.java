@@ -15,7 +15,7 @@ public class ReactiveCommentRepository implements CommentRepository {
     @Override
     public Flux<Comment> findAll() {
         //simulate data streaming every 1 second.
-        return Flux.interval(Duration.ofSeconds(30))
+        return Flux.interval(Duration.ofSeconds(10))
                 .onBackpressureDrop()
                 .map(this::generateComment)
                 .flatMapIterable(x -> x);
